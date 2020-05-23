@@ -2,9 +2,10 @@
 
 # application environment
 
-require 'bundler/setup'
-Bundler.require(:default)
-
+require 'bundler'  #talk to michael about this
+Bundler.require
+require "open-uri"
+require "net/http"
 
 require_relative './app_cli/cli.rb'
 require_relative './app_cli/api.rb'
