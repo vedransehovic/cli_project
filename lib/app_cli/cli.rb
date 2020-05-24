@@ -10,6 +10,8 @@ class Cli
         print_selection_prompt
         id = id_validation(prompt_selection)
         get_character_details(id)
+        print_search_again?
+        continue?(prompt_selection)
     end
 
     def print_all
@@ -26,6 +28,14 @@ class Cli
 
     def print_error
         puts "Your selection is not valid, please try again. "
+    end
+
+    def print_search_again?
+        puts "Would you like to search again? (Y / N)"
+    end
+
+    def print_goodbye
+        puts "Thank you for your interest. Goodbye."
     end
 
     def get_character_details(id)
@@ -45,6 +55,15 @@ class Cli
 
     def prompt_selection
         gets.chomp
+    end
+
+    def continue?(response)
+        if response == "y"
+            main
+        else
+            print_goodbye
+            exit
+        end
     end
 
     def id_validation(id)

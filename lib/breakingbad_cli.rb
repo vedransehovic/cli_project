@@ -4,7 +4,7 @@
 
 require 'bundler'  #talk to michael about this. WHy this works and not "bundler/setup" like he had. "bundler/setup" works on a mac.
 Bundler.require
-require "open-uri"
+require "open-uri" # probably don't need it, ask michael. 
 require "net/http"
 
 require_relative './app_cli/app_breakingbad.rb'
