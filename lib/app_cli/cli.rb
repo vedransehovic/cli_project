@@ -8,7 +8,8 @@ class Cli
     def main
         print_all
         print_selection_prompt
-        id = prompt_selection
+        id = id_validation(prompt_selection)
+        
     end
 
     def print_all
@@ -35,6 +36,7 @@ class Cli
         id = id.to_i
         if id < 1 || id > Breakingbad.all.size
             print_error
+            sleep 1
             main
         end
         id
