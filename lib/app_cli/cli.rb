@@ -28,6 +28,21 @@ class Cli
         puts "Your selection is not valid, please try again. "
     end
 
+    def get_character_details(id)
+        character = Breakingbad.all.find {|character| character.id == id}
+        system "clear"
+        ap "----------------------------------------------------------------"
+        ap "NAME: #{character.name}"
+        ap "NICKNAME: #{character.nickname}"
+        ap "BIRTHDAY: #{character.birthday}"
+        ap "ACTOR: #{character.actor}"
+        ap "STATUS: #{character.status}"
+        ap "OCCUPATION: #{character.occupation}"
+        ap "IMAGE: #{character.img}"
+        ap "----------------------------------------------------------------"
+    end
+
+
     def prompt_selection
         gets.chomp
     end
@@ -42,18 +57,5 @@ class Cli
         id
     end
 
-    def get_character_details(id)
-        character = Breakingbad.all.find {|character| character.id == id}
-        system "clear"
-        ap "----------------------------------------------------------------"
-        ap "NAME: #{character.name}"
-        ap "NICKNAME: #{character.nickname}"
-        ap "BIRTHDAY: #{character.birthday}"
-        ap "ACTOR: #{character.actor}"
-        ap "STATUS: #{character.status}"
-        ap "OCCUPATION: #{character.occupation}"
-        ap "IMAGE: #{character.img}"
-        ap "----------------------------------------------------------------"
-    end
 
 end

@@ -2,7 +2,7 @@
 
 # application environment
 
-require 'bundler'  #talk to michael about this
+require 'bundler'  #talk to michael about this. WHy this works and not "bundler/setup" like he had. "bundler/setup" works on a mac.
 Bundler.require
 require "open-uri"
 require "net/http"
