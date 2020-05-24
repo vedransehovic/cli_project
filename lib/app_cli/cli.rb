@@ -1,6 +1,6 @@
 class Cli
     def run
-        welcome
+        print_welcome
         Api.get_data
         main
     end
@@ -9,14 +9,14 @@ class Cli
         print_all
         print_selection_prompt
         id = id_validation(prompt_selection)
-        
+        get_character_details(id)
     end
 
     def print_all
         Breakingbad.all.each {|character| puts "#{character.id}.) #{character.name}"}
     end
 
-    def welcome
+    def print_welcome
         puts "This is a list of Breaking Bad Characters."
     end
 
@@ -42,5 +42,18 @@ class Cli
         id
     end
 
+    def get_character_details(id)
+        character = Breakingbad.all.find {|character| character.id == id}
+        system "clear"
+        ap "----------------------------------------------------------------"
+        ap "NAME: #{character.name}"
+        ap "NICKNAME: #{character.nickname}"
+        ap "BIRTHDAY: #{character.birthday}"
+        ap "ACTOR: #{character.actor}"
+        ap "STATUS: #{character.status}"
+        ap "OCCUPATION: #{character.occupation}"
+        ap "IMAGE: #{character.img}"
+        ap "----------------------------------------------------------------"
+    end
 
 end

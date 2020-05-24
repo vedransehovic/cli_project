@@ -12,6 +12,7 @@ class Api
             img = element["img"]
             actor = element["portrayed"]
             occupation = element["occupation"]
+            status = element["status"]
             nickname = element["nickname"]
             Breakingbad.new(id, name, birthday, img, actor, occupation, nickname)    
     end
