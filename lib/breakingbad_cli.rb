@@ -7,6 +7,7 @@ Bundler.require
 require "open-uri"
 require "net/http"
 
-require_relative './app_cli/cli.rb'
-require_relative './app_cli/api.rb'
 require_relative './app_cli/app_breakingbad.rb'
+require_relative './app_cli/api.rb'
+require_relative './app_cli/cli.rb'
+
