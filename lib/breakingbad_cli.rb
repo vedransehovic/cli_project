@@ -6,6 +6,8 @@ require 'bundler'  #talk to michael about this. WHy this works and not "bundler/
 Bundler.require
 require "open-uri" # probably don't need it, ask michael. 
 require "net/http"
+require "tty-prompt"
+
 
 require_relative './app_cli/app_breakingbad.rb'
 require_relative './app_cli/api.rb'

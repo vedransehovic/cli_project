@@ -1,4 +1,6 @@
 class Cli
+    
+
     def run
         print_welcome
         Api.get_data
@@ -6,9 +8,11 @@ class Cli
     end
 
     def main
-        print_all
-        print_selection_prompt
-        id = id_validation(prompt_selection)
+        system "clear"
+        #print_all
+        id = print_menu
+        #print_selection_prompt
+        #id = id_validation(prompt_selection)
         get_character_details(id)
         print_search_again?
         continue?(prompt_selection)
@@ -16,6 +20,11 @@ class Cli
 
     def print_all
         Breakingbad.all.each {|character| puts "#{character.id}.) #{character.name}"}
+    end
+
+    def print_menu
+        prompt = TTY::Prompt.new
+        prompt.enum_select("Welcome to the list of Breaking Bad Characters.\nEnter a number from the list to see more info about that character \n\n", Breakingbad.choices, per_page: 15)
     end
 
     def print_welcome

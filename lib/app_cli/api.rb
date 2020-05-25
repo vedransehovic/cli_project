@@ -1,6 +1,6 @@
 class Api
     puts "Api class loaded"
-    BASE_URL = "https://breakingbadapi.com/api/characters?limit=50" #this is API's base URL, it's constant because... well it doesn't change. 
+    BASE_URL = "https://breakingbadapi.com/api/characters" #this is API's base URL, it's constant because... well it doesn't change. 
 
     def self.get_data
         response = RestClient.get(BASE_URL)
