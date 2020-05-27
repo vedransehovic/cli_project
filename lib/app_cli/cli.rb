@@ -22,7 +22,7 @@ class Cli
         Breakingbad.all.each {|character| puts "#{character.id}.) #{character.name}"}
     end
 
-    def print_menu
+    def print_menu #prints the menu using ttl-prompt Gem
         prompt = TTY::Prompt.new
         prompt.enum_select("Welcome to the list of Breaking Bad Characters.\nEnter a number from the list to see more info about that character \n\n", Breakingbad.choices, per_page: 15)
     end
@@ -56,7 +56,7 @@ class Cli
         ap "BIRTHDAY: #{character.birthday}"
         ap "ACTOR: #{character.actor}"
         ap "STATUS: #{character.status}"
-        ap "OCCUPATION: #{character.occupation}"
+        ap "OCCUPATION: #{character.occupation.join(", ")}" # converting an array to a string seperating each element with a comma and space for a better looking output
         ap "IMAGE: #{character.img}"
         ap "----------------------------------------------------------------"
     end
