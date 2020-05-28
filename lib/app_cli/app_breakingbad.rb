@@ -1,4 +1,4 @@
-class Breakingbad
+class Character
     puts "Breakingbad class loaded"
     attr_accessor :name, :id, :birthday, :img, :actor, :occupation, :nickname, :status
     @@all = []

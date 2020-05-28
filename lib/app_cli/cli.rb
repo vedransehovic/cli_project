@@ -10,31 +10,23 @@ class Cli
 
     def main
         system "clear"
-        #print_all
         id = print_menu
-        #print_selection_prompt
-        #id = id_validation(prompt_selection)
         get_character_details(id)
         print_search_again?
         continue?(prompt_selection)
     end
 
-    def print_all
-        Breakingbad.all.each {|character| puts "#{character.id}.) #{character.name}"}
-    end
 
     def print_menu #prints the menu using ttl-prompt Gem
         prompt = TTY::Prompt.new
-        prompt.enum_select("Welcome to the list of Breaking Bad Characters.\nEnter a number from the list to see more info about that character \n\n", Breakingbad.choices, per_page: 15)
+        prompt.enum_select("Welcome to the list of Breaking Bad Characters.\nEnter a number from the list to see more info about that character \n\n", Character.choices, per_page: 15)
     end
 
     def print_welcome
         puts "This is a list of Breaking Bad Characters."
     end
 
-    def print_selection_prompt
-        puts "Please select a character's number to get more information."
-    end
+
 
     def print_error
         puts "Your selection is not valid, please try again. "
@@ -49,8 +41,8 @@ class Cli
     end
 
     def get_character_details(id)
-        character = Breakingbad.all.find {|character| character.id == id}
-        quote = Quote.all.select {|quote| quote.author == character.name}
+        character = Character.all.find {|character| character.id == id}
+        quote = Quote.all.select {|quote| quote.author == character.name}  #selecting only quotes that belong to this character. Only connecting part was the name. 
         system "clear"
         ap "----------------------------------------------------------------"
         ap "NAME: #{character.name}"

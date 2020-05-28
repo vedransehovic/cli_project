@@ -15,7 +15,7 @@ class Api
             occupation = element["occupation"]
             status = element["status"]
             nickname = element["nickname"]
-            Breakingbad.new(id, name, birthday, img, actor, occupation, nickname)    
+            Character.new(id, name, birthday, img, actor, occupation, nickname)    
         end
     end
 
