@@ -4,6 +4,7 @@ class Cli
     def run
         print_welcome
         Api.get_data
+        Api.get_quote_data
         main
     end
 
@@ -49,6 +50,7 @@ class Cli
 
     def get_character_details(id)
         character = Breakingbad.all.find {|character| character.id == id}
+        quote = Quote.all.select {|quote| quote.author == character.name}
         system "clear"
         ap "----------------------------------------------------------------"
         ap "NAME: #{character.name}"
@@ -59,6 +61,13 @@ class Cli
         ap "OCCUPATION: #{character.occupation.join(", ")}" # converting an array to a string seperating each element with a comma and space for a better looking output
         ap "IMAGE: #{character.img}"
         ap "----------------------------------------------------------------"
+        if quote != []
+            puts "These are some quotes by #{character.name}:\n\n"
+            quote.each do |line|
+                puts "\t - #{line.quote}"
+            end
+            puts "\n\n"
+        end
     end
 
 
