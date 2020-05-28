@@ -24,5 +24,9 @@ class Character
     def self.choices
         @@choices
     end
+
+    def quotes
+        quotes = Quote.all.select {|quote| quote.author == self.name}
+    end
 end
 

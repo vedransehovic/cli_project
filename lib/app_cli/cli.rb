@@ -26,12 +26,6 @@ class Cli
         puts "This is a list of Breaking Bad Characters."
     end
 
-
-
-    def print_error
-        puts "Your selection is not valid, please try again. "
-    end
-
     def print_search_again?
         puts "Would you like to search again? (Y / N)"
     end
@@ -42,7 +36,6 @@ class Cli
 
     def get_character_details(id)
         character = Character.all.find {|character| character.id == id}
-        quote = Quote.all.select {|quote| quote.author == character.name}  #selecting only quotes that belong to this character. Only connecting part was the name. 
         system "clear"
         ap "----------------------------------------------------------------"
         ap "NAME: #{character.name}"
@@ -53,9 +46,9 @@ class Cli
         ap "OCCUPATION: #{character.occupation.join(", ")}" # converting an array to a string seperating each element with a comma and space for a better looking output
         ap "IMAGE: #{character.img}"
         ap "----------------------------------------------------------------"
-        if quote != []
+        if character.quotes != []
             puts "These are some quotes by #{character.name}:\n\n"
-            quote.each do |line|
+            character.quotes.each do |line|
                 puts "\t - #{line.quote}"
             end
             puts "\n\n"
@@ -68,22 +61,13 @@ class Cli
     end
 
     def continue?(response)
-        if response == "y"
+        response = response.upcase
+        if response == "Y"
             main
         else
             print_goodbye
             exit
         end
-    end
-
-    def id_validation(id)
-        id = id.to_i
-        if id < 1 || id > Breakingbad.all.size
-            print_error
-            sleep 1
-            main
-        end
-        id
     end
 
 
