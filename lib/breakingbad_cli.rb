@@ -2,7 +2,7 @@
 
 # application environment
 
-require 'bundler'  #talk to michael about this. WHy this works and not "bundler/setup" like he had. "bundler/setup" works on a mac.
+require 'bundler' 
 Bundler.require
 require "tty-prompt"
 
